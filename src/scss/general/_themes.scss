@@ -1,0 +1,55 @@
+.color-primary {
+  --theme: #{$primary};
+  --theme-dark: #{$darkBlue};
+  --theme-rgba: rgba(45, 129, 255, 0.5);
+  --theme-radial: #{$radialPrimary};
+}
+
+.color-secondary {
+  --theme: #{$secondary};
+  --theme-dark: #{$darkGreen};
+  --theme-rgba: rgba(122, 212, 70, 0.5);
+  --theme-radial: #{$radialSecondary};
+}
+
+.color-white {
+  color: #0d0d0d;
+
+  .card-wide {
+    background: #ffffff;
+
+    h3 {
+      color: $primary;
+    }
+
+    &--text-left {
+      ul {
+        li {
+          strong {
+            padding: 0 44px 0 0;
+
+            &:after {
+              width: 24px;
+              height: 28px;
+              background-image: url(../img/bg/lightning-on-white.svg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .card-wide {
+      &--text-left {
+        ul {
+          li {
+            strong {
+              padding: 0 35px 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

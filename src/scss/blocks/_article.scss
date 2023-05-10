@@ -1,0 +1,69 @@
+.article-wrapper {
+  padding: 14px 100px 0;
+
+  @include media-breakpoint-down(xl) {
+    padding: 0;
+  }
+}
+
+.article-banner {
+  position: relative;
+  margin: 0 0 64px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transform: translateZ(0);
+
+  figure {
+    margin: 0;
+    position: relative;
+
+    img {
+      @include img-fit;
+    }
+
+    &:after {
+      content: "";
+      @include abs;
+      background: linear-gradient(180deg, rgba(19, 19, 19, 0) 68.51%, #131313 100%);
+    }
+  }
+
+  .text {
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 56px;
+
+    .date {
+      opacity: 0.5;
+      font-size: 16px;
+      line-height: 1.4;
+      margin: 12px 0 -5px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0 33px;
+    padding: 0 0 162px;
+
+    .text {
+      left: 16px;
+      right: 16px;
+      bottom: 32px;
+
+      h1 {
+        font-size: 32px;
+        line-height: 120%;
+      }
+
+      .date {
+        margin: 17px 0 -1px;
+      }
+    }
+
+    & + h3 {
+      margin-top: 65px;
+    }
+  }
+}

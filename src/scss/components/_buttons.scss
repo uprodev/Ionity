@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+a,
+button {
+  transition: all 0.5s;
+  -webkit-appearance: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+}
+
+.btn {
+  width: auto;
+  min-width: 166px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  border: none;
+  border-radius: 48px;
+  padding: 0 8px 0 15px;
+  white-space: nowrap;
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+    transition: all 0.5s;
+
+    svg {
+      display: block;
+      path {
+        transition: all 0.5s;
+      }
+    }
+  }
+
+  &.btn-solid {
+    background-color: var(--theme);
+    color: $black;
+
+    .icon {
+      background-color: $black;
+      border-radius: 100%;
+
+      &--arrow {
+        svg path {
+          stroke: $white;
+        }
+      }
+
+      &--lightning {
+        svg path {
+          fill: var(--theme);
+        }
+      }
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 24px var(--theme-rgba), 0px 0px 24px var(--theme-rgba);
+      .icon {
+        box-shadow: 0 0 40px var(--theme);
+
+        &--lightning {
+          svg path {
+            fill: $white;
+          }
+        }
+      }
+    }
+
+    &:active {
+      background-color: $white;
+      box-shadow: 0px 0px 24px var(--theme-rgba), 0px 0px 24px var(--theme-rgba);
+
+      .icon {
+        &--lightning {
+          svg path {
+            fill: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &.btn-outlined {
+    border: 2px solid $white;
+    background-color: transparent;
+    color: $white;
+
+    span {
+      color: inherit;
+    }
+
+    .icon {
+      background-color: $white;
+      border-radius: 100%;
+
+      &--arrow {
+        svg path {
+          stroke: $black;
+        }
+      }
+
+      &--lightning {
+        svg path {
+          fill: $black;
+        }
+      }
+    }
+
+    &:hover {
+      border-color: var(--theme);
+      color: var(--theme);
+
+      .icon {
+        box-shadow: 0 0 40px var(--theme);
+        background-color: var(--theme);
+
+        &--lightning {
+          svg path {
+            fill: $white;
+          }
+        }
+      }
+    }
+
+    &:active {
+      border-color: var(--theme-dark);
+      color: var(--theme-dark);
+
+      .icon {
+        box-shadow: 0 0 40px var(--theme-dark), 0 0 40px var(--theme-dark);
+        background-color: var(--theme-dark);
+
+        &--lightning {
+          svg path {
+            fill: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &.btn-outlined-dark {
+    border: 2px solid $darkGray;
+    background-color: transparent;
+    color: $darkGray;
+
+    .icon {
+      background-color: $darkGray;
+      border-radius: 100%;
+
+      &--arrow {
+        svg path {
+          stroke: $white;
+        }
+      }
+
+      &--lightning {
+        svg path {
+          fill: $white;
+        }
+      }
+    }
+
+    &:hover {
+      border-color: var(--theme);
+      color: var(--theme);
+
+      .icon {
+        box-shadow: 0 0 40px var(--theme);
+        background-color: var(--theme);
+
+        &--lightning {
+          svg path {
+            fill: $white;
+          }
+        }
+      }
+    }
+
+    &:active {
+      border-color: var(--theme-dark);
+      color: var(--theme-dark);
+
+      .icon {
+        box-shadow: 0 0 40px var(--theme-dark), 0 0 40px var(--theme-dark);
+        background-color: var(--theme-dark);
+
+        &--lightning {
+          svg path {
+            fill: $white;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+}
+
+.btn-more {
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px solid $white;
+  padding: 0 0 4px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: $white;
+  transition: all 0.5s;
+
+  svg {
+    display: block;
+    margin-left: 12px;
+
+    path {
+      transition: all 0.5s;
+    }
+  }
+
+  &:hover {
+    color: var(--theme);
+    border-color: var(--theme);
+
+    svg path {
+      stroke: var(--theme);
+    }
+  }
+
+  &:active {
+    color: var(--theme-dark);
+    border-color: var(--theme-dark);
+
+    svg path {
+      stroke: var(--theme-dark);
+    }
+  }
+}

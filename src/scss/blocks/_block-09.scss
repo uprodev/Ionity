@@ -1,0 +1,32 @@
+.block-09 {
+  margin: 0 0 64px;
+
+  .wrapper-bg {
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 600px;
+      height: 600px;
+      background: $radialPrimary;
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translate3d(-55%, -50%, 0);
+    }
+  }
+
+  .card-wide {
+    z-index: 3;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0 32px;
+
+    .wrapper-bg {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

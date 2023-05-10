@@ -1,0 +1,175 @@
+.contact-form {
+  p {
+    margin: 0 0 18px;
+    line-height: 1.45;
+  }
+
+  h3 {
+    margin: 10px 0 6px;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+
+    .form-col {
+      width: 50%;
+      padding: 0 5px;
+    }
+  }
+
+  .field {
+    position: relative;
+    margin: 0 0 10px;
+    width: 100%;
+
+    p {
+      margin: 0 !important;
+    }
+
+    &.error {
+      margin-bottom: 23px;
+      border-color: $error;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      height: 30px;
+      padding: 6px 0 7px;
+      font-size: 12px;
+      line-height: 14px;
+      color: $text-color;
+      @include placeholder-text($placeholder-color, 1);
+      background: none;
+      border: 1px solid transparent;
+      border-bottom: 1px solid $text-color;
+      border-radius: 0;
+      resize: none;
+      overflow: hidden;
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        outline: none;
+        box-shadow: none;
+        border-color: transparent;
+        border-bottom-color: $headline-color;
+        @include placeholder-text($headline-color, 1);
+        color: $headline-color;
+      }
+
+      &:not(:placeholder-shown) {
+        color: $headline-color;
+      }
+
+      &.error,
+      &.wpcf7-not-valid {
+        @include placeholder-text($error, 1);
+        border-bottom-color: $error;
+
+        & + .error-msg {
+          display: block;
+        }
+      }
+    }
+
+    textarea {
+      padding: 14px 0 12px;
+    }
+
+    .wpcf7-form-control-wrap {
+      display: block;
+      position: relative;
+    }
+
+    .wpcf7-not-valid-tip {
+      font-size: 10px;
+      position: absolute;
+      top: 100%;
+      line-height: 1.4;
+      margin: 4px 0 0;
+      letter-spacing: 0.01em;
+    }
+
+    .form-add-file {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 53px;
+      background: url(../img/icons/file-m.svg) 50% no-repeat;
+
+      input {
+        @include abs;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+    }
+
+    .error-msg {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      font-size: 10px;
+      color: $error;
+      letter-spacing: 0.01em;
+      padding: 2px 0 0;
+      display: none;
+    }
+  }
+
+  [type="submit"] {
+    margin-top: 7px;
+  }
+
+  .tab-nav p {
+    margin: 0 !important;
+  }
+  .tab-nav li {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    p {
+      max-width: 555px;
+      margin: 0 0 40px;
+    }
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    .tab-nav {
+      li {
+        label {
+          font-size: 0.78rem;
+          & > span {
+            padding: 15px 20px;
+          }
+        }
+      }
+    }
+
+    .form-wrapper {
+      margin-top: 11px;
+    }
+
+    .field {
+      margin: 0 0 21px;
+      input,
+      textarea {
+        height: auto;
+        padding: 8px 0;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    [type="submit"] {
+      margin-top: 18px;
+    }
+  }
+}

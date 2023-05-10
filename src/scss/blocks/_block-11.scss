@@ -1,0 +1,45 @@
+.block-11 {
+  margin: 0 0 60px;
+
+  .card-wide {
+    background: $white url(../img/bg/bg-ellipses.svg) right bottom no-repeat;
+    .card-main {
+      .text {
+        width: 50%;
+
+        p {
+          margin: 0 0 48px;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0 32px;
+
+    .card-wide {
+      background-image: url(../img/bg/bg-ellipses-m.svg);
+      display: flex;
+      flex-direction: column-reverse;
+      border: none;
+
+      .card-image {
+        position: static;
+        padding: 0 16px 0 25px;
+      }
+
+      .card-main {
+        min-height: 0;
+        padding: 40px 16px 27px;
+
+        .text {
+          width: 100%;
+
+          p {
+            margin: 0 0 28px;
+          }
+        }
+      }
+    }
+  }
+}

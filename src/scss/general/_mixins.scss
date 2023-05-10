@@ -1,0 +1,50 @@
+@mixin abs() {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin abs-center() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+@mixin img-abs() {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@mixin img-fit() {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@mixin placeholder-text($color: $placeholder-color, $opacity: 1) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &:-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+}

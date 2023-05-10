@@ -1,0 +1,153 @@
+.block-text {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 0 97px;
+
+  * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h3 {
+    margin: 97px 0 10px;
+    color: $primary;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    margin: 0 0 31px;
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  p {
+    margin: 0 0 0.9em;
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: counter;
+    margin: 0 0 16px;
+
+    li {
+      padding: 0 0 0 44px;
+      position: relative;
+      margin: 0 0 10px;
+
+      &:before {
+        content: counter(counter) ".";
+        counter-increment: counter;
+        position: absolute;
+        left: 16px;
+        top: 0;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+
+    li {
+      padding: 0 0 0 54px;
+      position: relative;
+      margin: 0 0 12px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 26px;
+        top: 9px;
+        width: 10px;
+        height: 10px;
+        background-color: $white;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  .image {
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    margin: 34px 0 32px;
+    transform: translateZ(0);
+
+    img {
+      @include img-fit;
+    }
+  }
+
+  .row {
+    .image {
+      margin: 0;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 14px 0 0;
+    font-size: 14px;
+    margin: 0 0 97px;
+
+    h3 {
+      margin: 98px 0 15px;
+    }
+
+    h2 {
+      margin: 0 0 24px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 1.15em;
+    }
+
+    ol {
+      margin: -6px 0 12px;
+
+      li {
+        padding: 0 0 0 32px;
+        margin: 0 0 8px;
+
+        &:before {
+          left: 8px;
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+
+      li {
+        padding: 0 0 0 32px;
+        margin: 0 0 8px;
+
+        &:before {
+          left: 12px;
+          top: 7px;
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+
+    .image {
+      margin: 15px 0;
+    }
+
+    .row {
+      .image {
+        margin: 15px 0;
+      }
+    }
+  }
+}

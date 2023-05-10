@@ -1,0 +1,64 @@
+.block-06 {
+  margin: 0 0 64px;
+
+  .row {
+    --bs-gutter-x: 28px;
+    --bs-gutter-y: 32px;
+
+    & > div {
+      &:first-child {
+        .card {
+          &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 600px;
+            height: 600px;
+            background: var(--theme-radial);
+            transform: translate3d(40%, -40%, 0);
+            opacity: 0.8;
+          }
+
+          .card-image {
+            &:after {
+              content: "";
+              @include abs;
+              background: linear-gradient(45deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.4) 56%, rgba(0, 0, 0, 0) 100%);
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        .card {
+          color: $black;
+
+          .card-image {
+            background-color: $white;
+            background-image: url(../img/bg/bg-card-dark.svg), url(../img/bg/bg-card-blue.svg), url(../img/bg/bg-card.svg);
+            background-repeat: no-repeat;
+            background-size: 100% auto, 95% auto, auto 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0 31px;
+
+    .row {
+      & > div {
+        &:first-child {
+          .card {
+            &:after {
+              width: 350px;
+              height: 350px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

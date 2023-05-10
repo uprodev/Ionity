@@ -1,0 +1,25 @@
+.block-04 {
+  margin: 0 0 64px;
+
+  .container-fluid {
+    position: relative;
+    z-index: 9;
+  }
+
+  .card-wide {
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 600px;
+      height: 600px;
+      background: var(--theme-radial);
+      transform: translate3d(45%, -45%, 0);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0 32px;
+  }
+}

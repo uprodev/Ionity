@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ionity</title>
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+
+  <body class="home">
+    <nav class="main-navigation">
+      <div class="inner">
+        <ul>
+          <li>
+            <a href="#"><span>NOIR</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Investors</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Advertisement</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Locations</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Equipment owners</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Manufacturers</span></a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="#"><span>Montage</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Operational activity</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Map</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Questions</span></a>
+          </li>
+          <li>
+            <a href="#"><span>EcoFactor network</span></a>
+          </li>
+          <li>
+            <a href="#"><span>Contacts</span></a>
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="btn-menu-close"></button>
+    </nav>
+
+    <div class="page-wrapper">
+      <!-- start header-->
+      <header id="header" class="header">
+        <div class="container-fluid">
+          <div class="logo">
+            <a href="#">
+              <img src="assets/img/logo.svg" alt="" />
+            </a>
+          </div>
+          <button type="button" class="btn-menu-open"><span></span></button>
+        </div>
+      </header>
+      <!-- end header-->
+
+      <!-- start content-->
+      <div class="page-content">
+        <div class="page-inner">
+          <div class="block-map">
+            <div class="container-fluid">
+              <div class="block-header">
+                <h1>Charging venues</h1>
+                <div class="map-list">
+                  <div class="dropdown">
+                    <button class="drop-trigger">
+                      Choose your city
+                      <span class="icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.53334 9.53332L5.80001 7.79999C5.5889 7.58888 5.54179 7.34732 5.65867 7.07532C5.77512 6.80288 5.98334 6.66666 6.28334 6.66666H9.71667C10.0167 6.66666 10.2249 6.80288 10.3413 7.07532C10.4582 7.34732 10.4111 7.58888 10.2 7.79999L8.46667 9.53332C8.40001 9.59999 8.32779 9.64999 8.25001 9.68332C8.17223 9.71666 8.0889 9.73332 8.00001 9.73332C7.91112 9.73332 7.82779 9.71666 7.75001 9.68332C7.67223 9.64999 7.60001 9.59999 7.53334 9.53332Z" fill="#969696" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div class="drop-list">
+                      <input id="searchCity" type="text" placeholder="Enter your city" />
+                      <ul id="cityList"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="map" data-city="kiev"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block-contacts color-primary">
+          <div class="container-fluid">
+            <div class="d-md-none">
+              <h3>contacts</h3>
+              <h2>Get in touch with us</h2>
+            </div>
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="d-none d-md-block">
+                  <h3>contacts</h3>
+                  <h2>Get in touch with us</h2>
+                </div>
+                <form action="#" class="form">
+                  <div class="field">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" placeholder="Enter your name" />
+                  </div>
+                  <div class="field">
+                    <label for="name">Phone number</label>
+                    <input type="text" id="name" placeholder="Enter your phone number" />
+                  </div>
+                  <div class="field">
+                    <label for="name">Email</label>
+                    <input type="text" id="name" placeholder="Enter email" />
+                  </div>
+                  <div class="field">
+                    <label for="name">Message</label>
+                    <input type="text" id="name" placeholder="Enter your message" />
+                  </div>
+                  <div class="submit">
+                    <button type="submit" class="btn btn-outlined">
+                      <span>Contact with us</span>
+                      <span class="icon icon--lightning">
+                        <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.25758 12.3833L0.427955 11.2144L10.8129 0.636425L8.74235 7.61611L13.572 8.78498L3.18703 19.363L5.25758 12.3833Z" fill="black" />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-lg-7">
+                <div class="contact-list">
+                  <ul>
+                    <li>
+                      <div class="text">
+                        <a href="#">
+                          <strong>
+                            Kyiv
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                            </svg>
+                          </strong>
+                          <p>
+                            Yevhen Konovalets st., 36D<br />
+                            Kyiv, Ukraine 01133
+                          </p>
+                        </a>
+                      </div>
+                      <div class="link">
+                        <a href="#" class="btn-more">
+                          See on map
+                          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                          </svg>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <a href="tel:">
+                          <strong>
+                            +38 095 200 7 002
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                            </svg>
+                          </strong>
+                          <p>Support 24/7</p>
+                        </a>
+                      </div>
+                      <div class="link">
+                        <a href="tel:" class="btn-more">
+                          Call number
+                          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                          </svg>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <a href="tel:">
+                          <strong>
+                            +38 095 13 000 13
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                            </svg>
+                          </strong>
+                          <p>For investors</p>
+                        </a>
+                      </div>
+                      <div class="link">
+                        <a href="tel:" class="btn-more">
+                          Call number
+                          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                          </svg>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <a href="tel:">
+                          <strong>
+                            +38 095 43 000 43
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                            </svg>
+                          </strong>
+                        </a>
+                      </div>
+                      <div class="link">
+                        <a href="tel:" class="btn-more">
+                          Call number
+                          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                          </svg>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <a href="tel:">
+                          <strong>
+                            +38 099 73 000 73
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                            </svg>
+                          </strong>
+                          <p>Installing charging stations</p>
+                        </a>
+                      </div>
+                      <div class="link">
+                        <a href="tel:" class="btn-more">
+                          Call number
+                          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                          </svg>
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="text">
+                        <a href="mailto:CustomerService@ionity.ua">
+                          <strong>
+                            CustomerService@ionity.ua
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                            </svg>
+                          </strong>
+                          <p>Email</p>
+                        </a>
+                      </div>
+                      <div class="link">
+                        <a href="tel:" class="btn-more">
+                          Write an email
+                          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10.5L10 0.5M10 0.5H2.05882M10 0.5V8.83333" stroke="white" />
+                          </svg>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end content-->
+
+      <!-- start page footer-->
+      <footer class="page-footer">
+        <div class="container-fluid">
+          <div class="footer-main">
+            <div class="logo">
+              <a href="#"><img src="assets/img/logo.svg" alt="" /></a>
+            </div>
+            <div class="options color-primary">
+              <div class="lang-switch">
+                <ul>
+                  <li class="active"><a href="#">EN</a></li>
+                  <li><a href="#">UA</a></li>
+                </ul>
+              </div>
+              <a href="#" class="btn btn-outlined">
+                <span>Contact with us</span>
+                <span class="icon icon--lightning">
+                  <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.25758 12.3833L0.427955 11.2144L10.8129 0.636425L8.74235 7.61611L13.572 8.78498L3.18703 19.363L5.25758 12.3833Z" fill="black" />
+                  </svg>
+                </span>
+              </a>
+              <a href="#" class="btn btn-solid">
+                <span>Buy NOIR</span>
+                <span class="icon icon--lightning">
+                  <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.25758 12.3833L0.427955 11.2144L10.8129 0.636425L8.74235 7.61611L13.572 8.78498L3.18703 19.363L5.25758 12.3833Z" fill="black" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="footer-text">
+            <p>All rights reserved &copy; 2023</p>
+          </div>
+        </div>
+      </footer>
+      <!-- end page footer-->
+    </div>
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/headroom.js"></script>
+    <script src="assets/js/lazyload.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&key=AIzaSyDAmok443Z50tXkURhacfdYI0tg8nYQ4FM" type="text/javascript"></script>
+    <script src="assets/js/map.js"></script>
+  </body>
+</html>

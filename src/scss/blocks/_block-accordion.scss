@@ -1,0 +1,117 @@
+.block-accordion {
+  padding: 62px 0 57px;
+  background: url(../img/bg/bg-accordion.svg) 0 60px no-repeat;
+  background-size: auto 100%;
+
+  .container-fluid {
+    position: relative;
+    z-index: 2;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    column-gap: 50px;
+  }
+
+  .accordion {
+    .accordion-item {
+      border-bottom: 1px solid #2f2f2f;
+      padding: 13px 0;
+
+      .accordion-trigger {
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 12.5px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: $white;
+        text-align: left;
+
+        &:after {
+          content: "";
+          display: block;
+          background: url(../img/icons/arrow-accordion.svg);
+          width: 11px;
+          height: 11px;
+          transition: all 0.3s;
+          flex: 0 0 auto;
+          margin-left: 15px;
+        }
+      }
+
+      .accordion-panel {
+        display: none;
+        padding: 4px 17% 10px 16px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #969696;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      &.active {
+        .accordion-trigger {
+          &:after {
+            transform: scale(1, -1);
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .wrapper {
+      flex-direction: row;
+    }
+
+    .col-left {
+      width: 29.17%;
+      flex: 0 0 auto;
+    }
+    .col-right {
+      width: 100%;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 32px 0;
+    background-position: right 0 top 50px;
+    background-size: auto 450px;
+
+    h3 {
+      margin: 0 0 17px;
+    }
+
+    .accordion {
+      .accordion-item {
+        padding: 13px 0;
+
+        .accordion-trigger {
+          padding: 12.5px 16px;
+          font-size: 16px;
+          align-items: flex-start;
+        }
+
+        .accordion-panel {
+          padding: 2px 40px 11px 16px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

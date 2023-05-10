@@ -1,0 +1,30 @@
+.block-10 {
+  margin: 0 0 64px;
+
+  .wrapper-bg {
+    position: relative;
+
+    &:before {
+      content: "";
+      width: 1000px;
+      height: 1000px;
+      background: var(--theme-radial);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translate3d(40%, 30%, 0);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0 32px;
+
+    .wrapper-bg {
+      &:before {
+        width: 700px;
+        height: 700px;
+        transform: translate3d(40%, 35%, 0);
+      }
+    }
+  }
+}

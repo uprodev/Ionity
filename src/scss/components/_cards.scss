@@ -1,0 +1,595 @@
+.card {
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+  overflow: hidden;
+  transform: translateZ(0);
+
+  .card-image {
+    @include abs;
+
+    img {
+      @include img-fit;
+      border-radius: 32px;
+    }
+  }
+
+  .card-main {
+    height: 100%;
+    min-height: 618px;
+    position: relative;
+    z-index: 2;
+    padding: 50px 20px;
+    padding: 28.4% 70px 79px 56px;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      margin: 0 0 20px;
+    }
+
+    p {
+      font-size: 28px;
+      margin: 0 0 30px;
+      font-weight: 500;
+      line-height: 1.4;
+
+      @include media-breakpoint-down(xxl) {
+        br {
+          display: none;
+        }
+      }
+    }
+
+    .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+  }
+
+  @include media-breakpoint-down(xl) {
+    .card-main {
+      min-height: 400px;
+      padding: 27.26% 20px 40px;
+
+      p {
+        font-size: 20px;
+      }
+
+      .btn {
+        align-self: flex-start;
+        margin-top: auto;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .card-main {
+      min-height: 518px;
+      justify-content: flex-end;
+      padding: 20px 16px 32px;
+
+      h3 {
+        margin: 0 0 16px;
+      }
+
+      p {
+        font-size: 18px;
+        margin: 0;
+      }
+
+      .btn {
+        width: 100%;
+        margin: 38px 0 0;
+      }
+    }
+  }
+}
+
+.card-wide {
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+  overflow: hidden;
+  transform: translateZ(0);
+
+  .card-image {
+    @include abs;
+    margin: 0;
+
+    img {
+      @include img-fit;
+      border-radius: 32px;
+    }
+  }
+
+  .card-main {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    min-height: 618px;
+    padding: 40px 59px 71px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    h3 {
+      margin: 0 0 19px;
+    }
+
+    .text {
+      p {
+        margin: 0 0 30px;
+        font-weight: 500;
+        line-height: 1.4;
+        font-size: 32px;
+
+        @include media-breakpoint-down(xxl) {
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .btn {
+      align-self: flex-start;
+    }
+  }
+
+  &--two-col {
+    .wrapper {
+      margin: 0 0 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .col-left {
+        width: 60%;
+      }
+      .col-right {
+        width: 26.6%;
+      }
+    }
+
+    .card-image {
+      &:after {
+        content: "";
+        @include abs;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.88) 40.42%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
+    .card-main {
+      .text {
+        p {
+          margin: 0 0 40px;
+        }
+      }
+    }
+
+    ul {
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      row-gap: 48px;
+      font-size: 18px;
+      padding: 6px 0 0;
+
+      li {
+        strong {
+          display: inline-block;
+          position: relative;
+          font-size: 2.67em;
+          line-height: 1.17;
+          font-weight: 500;
+          padding: 0 70px 0 0;
+          white-space: nowrap;
+
+          &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 76px;
+            height: 76px;
+            background: url(../img/bg/lightning-light.svg);
+          }
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &--text-right {
+    .card-image {
+      &:after {
+        content: "";
+        @include abs;
+        background: linear-gradient(-90deg, rgba(0, 0, 0, 0.88) 40.42%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
+    .card-main {
+      align-items: flex-end;
+
+      .text {
+        width: 59.5%;
+
+        p {
+          margin: 0 0 48px;
+        }
+      }
+    }
+  }
+
+  &--text-left {
+    .text {
+      width: 60%;
+    }
+
+    ul {
+      margin: 0 0 46px;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      column-gap: 48px;
+
+      li {
+        font-size: 18px;
+        max-width: 260px;
+
+        strong {
+          display: inline-block;
+          position: relative;
+          font-size: 2.67em;
+          line-height: 1.17;
+          font-weight: 500;
+          padding: 0 70px 0 0;
+          color: $primary;
+          white-space: nowrap;
+
+          &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 76px;
+            height: 76px;
+            background: url(../img/bg/lightning-light.svg);
+          }
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(xl) {
+    .card-main {
+      min-height: 500px;
+
+      .text {
+        p {
+          font-size: 26px;
+        }
+      }
+    }
+
+    &--two-col {
+      .wrapper {
+        .col-right {
+          width: 35%;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .card-main {
+      min-height: 400px;
+      padding: 50px 20px 20px;
+
+      .text {
+        p {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .card-main {
+      min-height: 518px;
+      padding: 16px 16px 32px;
+
+      .text {
+        p {
+          font-size: 18px;
+        }
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    &--two-col {
+      .wrapper {
+        flex-direction: column-reverse;
+        row-gap: 64px;
+
+        .col-right {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        }
+        .col-left {
+          width: 100%;
+        }
+      }
+      ul {
+        row-gap: 18px;
+        font-size: 14px;
+        padding: 25px 0 0;
+
+        li {
+          strong {
+            font-size: 32px;
+            line-height: 39px;
+            padding: 0 63px 0 0;
+            margin: 0 0 -2px;
+          }
+        }
+      }
+      .card-main {
+        h3 {
+          margin: 0 0 17px;
+        }
+        .text {
+          p {
+            margin: 0 0 31px;
+          }
+        }
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+
+    &--text-right {
+      .card-main {
+        padding: 0;
+
+        .text {
+          min-height: 518px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          padding: 46px 16px 44px;
+
+          .btn {
+            width: 100%;
+            margin-top: auto;
+          }
+        }
+      }
+    }
+
+    &--text-left {
+      .card-main {
+        h3 {
+          margin: 0 0 17px;
+        }
+        .text {
+          width: 100%;
+          p {
+            margin: 0 0 23px;
+          }
+        }
+      }
+      ul {
+        flex-direction: column;
+        row-gap: 23px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0 0 40px;
+
+        li {
+          max-width: 72%;
+          font-size: 14px;
+          line-height: 1.2;
+
+          strong {
+            font-size: 32px;
+            line-height: 39px;
+            margin: 0 0 -2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card-map {
+  background: $darkGray url(../img/bg/bg-map.svg) 0 0 no-repeat;
+  background-size: auto 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+
+  &:after {
+    content: "";
+    width: 700px;
+    height: 700px;
+    background: var(--theme-radial);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate3d(-50%, -40%, 0);
+  }
+
+  .card-image {
+    margin: 0 0 0 27%;
+    padding: 58px 58px 65px 0;
+
+    img {
+      @include img-fit;
+    }
+  }
+
+  .card-main {
+    position: relative;
+    z-index: 2;
+    padding: 0 0 71px 71px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    h3 {
+      margin: 0 0 19px;
+    }
+
+    .text {
+      margin: 0 0 40px;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .card-image {
+      padding: 30px 30px 30px 0;
+    }
+
+    .card-main {
+      padding: 0 0 30px 30px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    height: 520px;
+    background-image: url(../img/bg/bg-map-m.svg);
+
+    &:after {
+      top: 0;
+      width: 600px;
+      height: 600px;
+      transform: translate3d(-35%, -50%, 0);
+    }
+
+    .card-image {
+      margin: 0 0 37px;
+      padding: 95px 0px 0 14px;
+    }
+
+    .card-main {
+      position: static;
+      padding: 0 15px 31px 15px;
+
+      h3 {
+        margin: 0 0 17px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.card-blog {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+  overflow: hidden;
+  height: 100%;
+  transform: translateZ(0);
+
+  .card-image {
+    margin: 0;
+    height: 100%;
+
+    img {
+      @include img-fit;
+      border-radius: 32px;
+      transform-origin: center;
+      transition: all 1s;
+      transform: scale(1.01);
+    }
+  }
+
+  .card-main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 48.3%, rgba(0, 0, 0, 0) 100%);
+    min-height: 47%;
+    padding: 72px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    p {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 140%;
+      margin: 0 0 24px;
+    }
+
+    .d-flex {
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+    }
+
+    .date {
+      opacity: 0.5;
+      display: block;
+      line-height: 1;
+      padding: 0 0 8px;
+    }
+  }
+
+  &:hover {
+    .card-image {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .card-main {
+      padding: 46px 31px;
+
+      p {
+        font-size: 22px;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    height: 460px;
+
+    .card-main {
+      p {
+        font-size: 18px;
+        margin: 0 0 27px;
+      }
+    }
+  }
+}

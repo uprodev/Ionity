@@ -1,0 +1,36 @@
+// Fonts
+$font-family-base: "Montserrat", sans-serif;
+
+// Colors
+$white: #fff;
+$black: #000;
+$dark: #131313;
+
+$primary: #2c80ff;
+$secondary: #7ad446;
+
+$darkBlue: #1e4dc6;
+$darkGreen: #11934d;
+$darkGray: #0d0d0d;
+
+$radialPrimaryGradient: radial-gradient(ellipse at center, rgba(44, 128, 255, 1) 0%, rgba(44, 128, 255, 0) 70%, rgba(44, 128, 255, 0) 100%);
+// $radialSecondary: radial-gradient(ellipse at center, rgba(122, 212, 70, 1) 0%, rgba(122, 212, 70, 0) 70%, rgba(122, 212, 70, 0) 100%);
+$radialPrimary: url(../img/bg/blue.svg) 50% / cover no-repeat;
+$radialSecondary: url(../img/bg/green.svg) 50% / cover no-repeat;
+$radialLightblue: radial-gradient(ellipse at center, rgba(139, 213, 255, 1) 0%, rgba(139, 213, 255, 0) 70%, rgba(139, 213, 255, 0) 100%);
+
+$text-color: $white;
+
+$placeholder-color: $text-color;
+$error: #ff4140;
+
+// Container
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1400px,
+  xxl: 1600px,
+);
