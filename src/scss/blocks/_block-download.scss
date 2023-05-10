@@ -1,8 +1,10 @@
 .block-download {
   padding: 92px 0 86px;
   margin: 0 0 64px;
-  background: url(../img/bg/bg-download.png) 0 0 no-repeat;
+  background-image: url(../img/bg/bg-download.png), url(../img/bg/bg-download-1.png);
   background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0, right 0;
   position: relative;
 
   &:after {
