@@ -135,6 +135,10 @@ jQuery(document).ready(function ($) {
       },
       breakpoints: {
         768: {
+          slidesPerView: 2,
+          spaceBetween: 28,
+        },
+        1024: {
           slidesPerView: slides,
           spaceBetween: 28,
           allowTouchMove: false,

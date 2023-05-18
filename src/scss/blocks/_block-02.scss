@@ -54,6 +54,11 @@
               @include abs;
               background: linear-gradient(90deg, rgba(0, 0, 0, 0.74) 40.42%, rgba(0, 0, 0, 0) 100%);
               background-size: 200% 100%;
+
+              @include media-breakpoint-down(md) {
+                background: linear-gradient(45deg, rgba(0, 0, 0, 0.74) 40.42%, rgba(0, 0, 0, 0) 100%);
+                background-size: cover;
+              }
             }
           }
         }

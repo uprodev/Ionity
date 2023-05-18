@@ -7,6 +7,7 @@
     padding: 41px 45px 0 71px;
     overflow: hidden;
     position: relative;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     &:before {
       content: "";
@@ -298,11 +299,14 @@
       &:before {
         width: 190px;
         height: 78px;
+        filter: blur(17px);
+        transform: translate3d(-50%, -18px, 0);
       }
       &:after {
         width: 264px;
         height: 274px;
         transform: translate3d(-50%, -40px, 0);
+        filter: blur(80px);
       }
     }
 
@@ -353,8 +357,8 @@
 
     .col-right {
       position: absolute;
-      top: 33px;
-      right: 0;
+      top: 8px;
+      right: -15px;
       width: 215px;
     }
 

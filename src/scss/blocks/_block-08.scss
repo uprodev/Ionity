@@ -50,6 +50,8 @@
     }
 
     .card-main {
+      background: url(../img/bg/bg-selection.svg) 0 0 no-repeat;
+      background-size: auto 100%;
       h3 {
         margin: 0 0 14px;
       }
@@ -100,8 +102,11 @@
         }
       }
 
-      .card-main .text p {
-        margin: 0 0 40px;
+      .card-main {
+        background-image: url(../img/bg/bg-selection-m.svg);
+        .text p {
+          margin: 0 0 40px;
+        }
       }
     }
   }

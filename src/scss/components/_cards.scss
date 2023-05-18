@@ -5,6 +5,7 @@
   border-radius: 32px;
   overflow: hidden;
   transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   .card-image {
     @include abs;
@@ -94,6 +95,7 @@
   border-radius: 32px;
   overflow: hidden;
   transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   .card-image {
     @include abs;
@@ -429,6 +431,7 @@
   overflow: hidden;
   position: relative;
   transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   &:after {
     content: "";
@@ -517,6 +520,7 @@
   overflow: hidden;
   height: 100%;
   transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   .card-image {
     margin: 0;

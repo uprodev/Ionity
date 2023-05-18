@@ -78,6 +78,7 @@
     overflow: hidden;
     margin: 34px 0 32px;
     transform: translateZ(0);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     img {
       @include img-fit;
