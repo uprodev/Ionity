@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Noir</title>
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+
+  <body class="home">
+    <div class="page-wrapper">
+      <!-- start content-->
+      <div class="page-content">
+        <div class="block-form">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4 col-xxl-6 d-none d-lg-block">
+                <div class="form-image">
+                  <img class="lazy" data-src="assets/img/form-img.jpg" srcset="assets/img/form-img.jpg 1x, assets/img/form-img@2x.jpg 2x" alt="" />
+                </div>
+              </div>
+              <div class="col-lg-8 col-xxl-6">
+                <div class="form-header">
+                  <h2>Make an order</h2>
+                  <div class="form-ready">
+                    <div class="item item--product-ready">
+                      <div class="product-header">
+                        <span class="icon"><img src="assets/img/noir-logo-duo.svg" alt="" /></span>
+                        Noir <strong>eDuo</strong>
+                        <span>(1 piece)</span>
+                      </div>
+                      <div class="description">
+                        <p>Montage: Stand</p>
+                        <p>Connectors: Type 1 j1772 (with holder), Mennekes Type 2</p>
+                      </div>
+                      <div class="price">$1149</div>
+                      <div class="back-link"><a href="#">Change</a></div>
+                    </div>
+
+                    <div class="item item--personal-ready">
+                      <div class="personal-data">John Smith</div>
+                      <div class="personal-data">099 999 99 99</div>
+                      <div class="personal-data">johnsmith@email.com</div>
+                      <div class="back-link"><a href="#">Change</a></div>
+                    </div>
+
+                    <div class="item item--delivery-ready">
+                      <div class="delivery-image"><img src="assets/img/logo-post.png" alt="" /></div>
+                      <div class="delivery-data">Kyiv, №2: Bohatyrska st., 11a</div>
+                      <div class="back-link"><a href="#">Change</a></div>
+                    </div>
+                  </div>
+                  <p>Step 4. Enter payment details</p>
+                </div>
+                <div class="form-main">
+                  <form action="#">
+                    <div class="form-payment">
+                      <div class="form-field">
+                        <label for="cardNum">Card number</label>
+                        <input type="text" id="cardNum" placeholder="Card number" />
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-field">
+                            <label for="cardDate">MM / YY</label>
+                            <input type="text" id="cardDate" placeholder="MM / YY" />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-field">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="CVV" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-field">
+                        <label for="cardName">Card holder name</label>
+                        <input type="text" id="cardName" placeholder="Card holder name" />
+                      </div>
+                      <div class="form-buttons">
+                        <button type="submit" class="btn btn-light">cHeckout</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end content-->
+
+      <!-- start page footer-->
+      <footer class="page-footer">
+        <div class="container-fluid">
+          <div class="footer-nav order-md-2">
+            <ul>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Cookies</a></li>
+            </ul>
+          </div>
+          <div class="footer-lang order-md-0">
+            <div class="title">Language</div>
+            <div class="lang-switch">
+              <ul>
+                <li class="active"><a href="#">UA</a></li>
+                <li><a href="#">EN</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-copy order-md-1">
+            <p>NOIR &copy; 2023</p>
+          </div>
+        </div>
+      </footer>
+      <!-- end page footer-->
+    </div>
+
+    <div class="details-popup">
+      <button type="button" class="button-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 10.3031L3.51479 1.81787L1.81799 3.51467L10.3032 11.9999L1.81799 20.4851L3.51479 22.1819L12 13.6967L20.4852 22.1819L22.182 20.4851L13.6968 11.9999L22.182 3.51467L20.4852 1.81787L12 10.3031Z" fill="white" />
+        </svg>
+      </button>
+      <div class="inner"></div>
+    </div>
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/headroom.js"></script>
+    <script src="assets/js/lazyload.js"></script>
+    <script src="assets/js/jquery.jstyling.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
