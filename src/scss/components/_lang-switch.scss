@@ -35,6 +35,33 @@
         opacity: 1;
         background-color: $white;
         color: $black;
+        position: relative;
+
+        &:active,
+        &:focus {
+          background-color: $darkBlue;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    ul {
+      .active {
+        position: relative;
+
+        &:before {
+          content: "";
+          @include abs-center;
+          width: 110%;
+          height: 110%;
+          background: $primary;
+          filter: blur(50px);
+        }
+
+        a {
+          background-color: $primary;
+        }
       }
     }
   }
