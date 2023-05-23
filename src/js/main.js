@@ -186,4 +186,24 @@ jQuery(document).ready(function ($) {
   $(document).on("click", function () {
     $(".dropdown").removeClass("active");
   });
+
+  // fade up
+  document.fonts.onloadingdone = function (fontFaceSetEvent) {
+    gsap.utils.toArray(".fade-up, .fade-wrapper > *").forEach(function (elem) {
+      ScrollTrigger.create({
+        trigger: elem,
+        start: "top bottom",
+        toggleActions: "play none none none",
+        onEnter: function () {
+          gsap.to(elem, {
+            duration: 1,
+            autoAlpha: 1,
+            y: 0,
+            ease: "none",
+            overwrite: "auto",
+          });
+        },
+      });
+    });
+  };
 });

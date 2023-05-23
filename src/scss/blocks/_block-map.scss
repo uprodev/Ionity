@@ -26,7 +26,7 @@
   }
 
   .infobox {
-    background: rgba(66, 66, 66, 0.7) url(../img/icons/ico-infobox.svg) 7px 7px no-repeat;
+    background: rgba(66, 66, 66, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 14px;
     padding: 7px 7px 7px 39px;
@@ -37,6 +37,16 @@
     overflow: hidden;
     transform: translateZ(0);
     -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+    &:after {
+      content: "";
+      background: url(../img/icons/ico-infobox.svg) 0 no-repeat;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: 7px;
+      top: 7px;
+    }
 
     &:before {
       content: "";
