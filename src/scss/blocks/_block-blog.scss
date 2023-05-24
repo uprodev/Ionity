@@ -51,7 +51,8 @@
     .blog-list {
       .card-blog {
         &.blog-featured {
-          min-height: 480px;
+          height: 480px;
+          padding: 0;
         }
       }
     }
@@ -69,8 +70,6 @@
       .card-blog {
         &:not(.blog-featured),
         &.blog-featured {
-          min-height: 460px;
-
           .card-main {
             p {
               font-size: 18px;
@@ -99,6 +98,28 @@
         &:hover {
           color: $primary;
           border-color: $primary;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .blog-list {
+      .card-blog {
+        &.blog-featured {
+          height: 480px;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xxl) {
+    .blog-list {
+      .card-blog {
+        &.blog-featured {
+          height: 620px;
+          padding: 0;
         }
       }
     }

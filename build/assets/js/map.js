@@ -222,8 +222,8 @@ $(function () {
     this.latlng_ = opts.latlng;
     this.map_ = opts.map;
     this.content = opts.content;
-    this.offsetVertical_ = -113;
-    this.offsetHorizontal_ = -240;
+    this.offsetVertical_ = -52;
+    this.offsetHorizontal_ = -20;
     this.height_ = "auto";
     var me = this;
     this.boundsChangedListener_ = google.maps.event.addListener(this.map_, "bounds_changed", function () {

@@ -1,0 +1,10 @@
+.fade-up {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.fade-wrapper {
+  & > * {
+    @extend .fade-up;
+  }
+}

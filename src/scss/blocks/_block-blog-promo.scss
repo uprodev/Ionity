@@ -134,4 +134,14 @@
       }
     }
   }
+
+  @include media-breakpoint-up(lg) {
+    .blog-slider {
+      &[data-slides="3"] {
+        .card-blog {
+          padding: 126% 0 0;
+        }
+      }
+    }
+  }
 }
