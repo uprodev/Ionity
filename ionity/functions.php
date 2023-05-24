@@ -1,5 +1,8 @@
 <?php
 
+require 'vendor/autoload.php';
+include 'inc/woo.php';
+
 add_action( 'wp_enqueue_scripts', 'add_styles' );
 add_action( 'wp_enqueue_scripts', 'add_scripts' );
 add_action('after_setup_theme', 'theme_register_nav_menu');
@@ -7,8 +10,12 @@ add_action('after_setup_theme', 'theme_register_nav_menu');
 
 function add_styles() {
 
-  if(is_page_template('templates/template-noir.php')){
+  if(is_page_template('templates/template-noir.php') || is_product() || is_checkout()){
       wp_enqueue_style('styles-noir', get_template_directory_uri().'/assets/css/styles-noir.css');
+      wp_enqueue_style('jquery-autocomplete',  'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/dark-hive/jquery-ui.min.css');
+
+
+
   }else{
       wp_enqueue_style('styles', get_template_directory_uri().'/assets/css/styles.css');
   }
@@ -22,9 +29,20 @@ function add_scripts() {
 	wp_enqueue_script( 'headroomjs', get_template_directory_uri() . '/assets/js/headroom.js', array('jquery'), false, true);
 	wp_enqueue_script( 'lazyloadjs', get_template_directory_uri() . '/assets/js/lazyload.js', array('jquery'), false, true);
 
-	if(is_page_template('templates/template-noir.php')){
+	if(is_page_template('templates/template-noir.php') || is_product() || is_checkout()){
         wp_enqueue_script( 'jstylingjs', get_template_directory_uri() . '/assets/js/jquery.jstyling.js', array('jquery'), false, true);
         wp_enqueue_script( 'main-noir', get_template_directory_uri() . '/assets/js/main-noir.js', array('jquery'), false, true);
+
+        wp_enqueue_script('jqueryvalidation',  'https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js', array(), false, 1);
+        wp_enqueue_script('jqueryvalidation_ru',  'https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_uk.js', array(), false, 1);
+
+        wp_enqueue_script('jquery.auto-complete',  'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js', array(), false, 1);
+
+        wp_enqueue_script( 'script-noir', get_template_directory_uri() . '/assets/js/script-noir.js', array('jquery'), false, true);
+
+
+
+
     }else{
         wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), false, true);
     }
@@ -97,4 +115,4 @@ function loadmore() {
     die;
 
 }
- 
+
