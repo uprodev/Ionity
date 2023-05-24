@@ -3,18 +3,6 @@
 use LisDev\Delivery\NovaPoshtaApi2;
 
 
-function get_cities0() {
-
-    $np = new NovaPoshtaApi2('63ff84977350e47bab0e207c2eb41263');
-
-    $result = $np->getCities('', 'Запор');
-
-
-
-
-    return $result;
-
-}
 
 function get_cities($key) {
 
@@ -37,11 +25,21 @@ function get_cities($key) {
 
 function get_warehouses($key) {
 
-    $np = new NovaPoshtaApi2($key);
+    $np = new NovaPoshtaApi2('63ff84977350e47bab0e207c2eb41263');
     $result = $np->getWarehouses(  $key);
+
+
+   // print_r($np->getCities('', 'Запоро'););
+//    print_r($result['data']);
+//
+//    die();
     if ($result['data']) {
         foreach ($result['data'] as $warehouse) {
-            $warehouses[] = '<option value="'.$warehouse['SiteKey'].'">'.$warehouse['SiteKey'].' - '.$warehouse['Description'].'</option>';
+
+            if ($warehouse['CategoryOfWarehouse'] == 'Postomat')
+                continue;
+
+            $warehouses[] = '<option value="'.$warehouse['Number'].'">#'.$warehouse['Number'].' - '.$warehouse['ShortAddress'].'</option>';
 
         }
     }

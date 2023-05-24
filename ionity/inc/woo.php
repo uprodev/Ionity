@@ -48,7 +48,7 @@ function get_cities_np() {
 
 
 function get_warehouses_np() {
-    $search = $_GET['ref'];
+    $search = $_GET['city'];
     $response = get_warehouses($search);
     echo  implode('', $response);
     wp_die();

@@ -79,62 +79,97 @@ jQuery(document).ready(function($){
         qty: qty
       },
       success: function (data) {
-
         $('.block-form').unblock()
-
         location.href = data.url
-
       },
     });
   });
 
 
+
+  let value
   $('.btn-to-3').click(function(e){
     e.preventDefault();
-
     let valid = true;
     let fields = ['#billing_first_name', '#billing_phone', '#billing_email'];
     $.each(fields, function(i, val){
-        valid = $(val).valid()
+        valid = $(val).valid() == false ? false : valid;
+        value = $(val).val();
+        $('[data-content="'+val+'"]').text(value)
     })
 
-    console.log(valid)
-
     if (valid) {
-      $('[data-step="2"]').hide();
-      $('[data-step="3"]').show()
+      $('[data-step]').hide();
+      $('[data-step="3"]').show();
+      $('.item--personal-ready').show();
+      show_title(3)
     }
 
   })
 
+  $('.btn-to-2').click(function(e){
+    e.preventDefault();
+    valid = false;
+
+    $('[data-step]').hide();
+    $('[data-step="2"]').show();
+    $('.item--personal-ready').hide()
+    show_title(2)
+  })
+
+  $('.btn-to-4').click(function(e){
+    e.preventDefault();
+    $.validator.setDefaults({
+      ignore: [],
+      // any other default options and/or rules
+    });
+
+    let valid = true;
+
+    let delivery = $('.shipping input:checked').val();
+
+    console.log(delivery)
+
+    let fields = 'free_shipping:1' === delivery ? ['#city1', '#street', '#building'] : ['#city_np', '#branch']
+
+    $.each(fields, function(i, val){
+      valid = $(val).valid() == false ? false : valid;
+      value = $(val).val();
+
+      let deliveryData = []
+      $('.delivery-variant.active [name]').each(function(){
+        let val = $(this).val();
+        deliveryData.push(val)
+      })
+      $('.delivery-data').text(deliveryData.join(', '))
+    })
+
+    if (valid) {
+
+      $('[data-step]').hide();
+      $('[data-step="4"]').show();
+      $('.item--delivery-ready').show();
+      show_title(4)
+    }
 
 
+  })
 
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#city_np" ).autocomplete({
+  $('.btn-to-3-change').click(function(e){
+    e.preventDefault();
+    $('[data-step]').hide();
+    $('[data-step="3"]').show();
+    $('.item--delivery-ready').hide();
+    show_title(3)
+  })
+
+  function show_title(step) {
+    let title = $('[data-step="'+step+'"]').attr('data-title')
+    $('.step-title').text(title)
+  }
+
+
+    $( ".np" ).autocomplete({
       source: function(request, response) {
         $.ajax({
           url: wc_add_to_cart_params.ajax_url + '?action=get_cities_np',
@@ -149,10 +184,8 @@ jQuery(document).ready(function($){
         });
       },
       select: function (event, ui) {
-        $('#city_np').val(ui.item.label); // display the selected text
-        $('#shipping_city').val(ui.item.label); // save selected id to input
-
-        console.log(ui.item)
+        $(this).val(ui.item.label); // display the selected text
+        $('#city').val(ui.item.label); // save selected id to input
 
         $.ajax({
           url: wc_add_to_cart_params.ajax_url + '?action=get_warehouses_np',
@@ -162,13 +195,14 @@ jQuery(document).ready(function($){
           },
           success: function(data) {
             $('#branch').html(data);
-            $.jStyling.createSelect($("select.select"));
+            $.jStyling.updateSelect($("select.select"));
           }
         });
 
 
         return false;
       },
+
       focus: function(event, ui){
         $("#autocomplete").val(ui.item.label);
         $("#selectuser_id").val(ui.item.value);
