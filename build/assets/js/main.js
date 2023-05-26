@@ -206,4 +206,65 @@ jQuery(document).ready(function ($) {
       });
     });
   };
+
+  // dots
+  if ($(".block-download").length) {
+    gsap.utils.toArray(".block-download .dot").forEach(function (elem) {
+      gsap.to(elem, {
+        duration: Math.random() * (3 - 0.7) + 0.7,
+        autoAlpha: Math.random() * 0.6,
+        repeat: -1,
+        yoyo: true,
+      });
+    });
+  }
+
+  // circles
+  if ($(".stats").length) {
+    gsap.to(".block-01 .image", {
+      scrollTrigger: {
+        trigger: ".stats",
+        start: "top 70%",
+      },
+      duration: 1,
+      y: 1,
+      opacity: 1,
+      ease: "linear",
+    });
+    gsap.utils.toArray(".stats .circle").forEach(function (elem) {
+      var rotate = elem.dataset.rotate;
+
+      gsap.to(elem, {
+        scrollTrigger: {
+          trigger: ".stats",
+          start: "top 70%",
+        },
+        delay: 1,
+        duration: 1,
+        rotation: rotate,
+        ease: "linear",
+      });
+      gsap.to(elem.querySelector(".icon"), {
+        scrollTrigger: {
+          trigger: ".stats",
+          start: "top 70%",
+        },
+        delay: 1,
+        duration: 1,
+        rotation: rotate * -1,
+        opacity: 1,
+        ease: "none",
+      });
+    });
+    gsap.to(".stats .number, .stats p", {
+      scrollTrigger: {
+        trigger: ".stats",
+        start: "top 70%",
+      },
+      duration: 0.5,
+      opacity: 1,
+      delay: 2,
+      ease: "none",
+    });
+  }
 });

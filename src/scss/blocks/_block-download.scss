@@ -1,11 +1,142 @@
 .block-download {
   padding: 92px 0 86px;
   margin: 0 0 64px;
-  background-image: url(../img/bg/bg-download.png), url(../img/bg/bg-download-1.png);
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: 0 0, right 0;
   position: relative;
+
+  .dots {
+    .dot {
+      position: absolute;
+
+      &:after {
+        content: "";
+        @include abs;
+        height: 1px;
+        background: linear-gradient(270deg, rgba(122, 212, 70, 0) 0%, #7ad446 100%);
+        width: var(--line);
+        transform-origin: 0 0;
+        transform: rotate(var(--rotate));
+        opacity: 0.2;
+      }
+
+      span {
+        display: block;
+        background: url(../img/bg/glowing-dot.svg) no-repeat;
+        width: 154px;
+        height: 136px;
+        @include abs-center;
+      }
+
+      &.dot-1 {
+        left: 25px;
+        top: 27%;
+        --line: 184px;
+        --rotate: 0;
+      }
+      &.dot-2 {
+        left: -50px;
+        top: 38%;
+        --line: 174px;
+        --rotate: 0;
+      }
+      &.dot-3 {
+        left: 80px;
+        top: 61%;
+        --line: 44px;
+        --rotate: 0;
+      }
+      &.dot-4 {
+        left: -70px;
+        top: 85%;
+        --line: 194px;
+        --rotate: 0;
+      }
+      &.dot-5 {
+        left: 25px;
+        top: 96%;
+        --line: 97px;
+        --rotate: 0;
+      }
+      &.dot-6 {
+        right: 39%;
+        bottom: 15px;
+        --line: 105px;
+        --rotate: -90deg;
+      }
+      &.dot-7 {
+        right: 27%;
+        bottom: 65px;
+        --line: 105px;
+        --rotate: -90deg;
+      }
+      &.dot-8 {
+        right: 6%;
+        bottom: 45px;
+        --line: 105px;
+        --rotate: -90deg;
+      }
+      &.dot-9 {
+        right: 15px;
+        top: 62%;
+        --line: 97px;
+        --rotate: -180deg;
+      }
+      &.dot-10 {
+        right: 0;
+        top: 40%;
+        --line: 119px;
+        --rotate: -180deg;
+      }
+      &.dot-11 {
+        right: 17px;
+        top: 17%;
+        --line: 97px;
+        --rotate: -180deg;
+      }
+      &.dot-12 {
+        right: -70px;
+        top: 6%;
+        --line: 184px;
+        --rotate: -180deg;
+      }
+
+      &.dot-13 {
+        right: 95px;
+        top: 14%;
+        --line: 95px;
+        --rotate: 0;
+      }
+      &.dot-14 {
+        right: 386px;
+        top: 23%;
+        --line: 386px;
+        --rotate: 0;
+      }
+      &.dot-15 {
+        right: 42px;
+        top: 40%;
+        --line: 42px;
+        --rotate: 0;
+      }
+      &.dot-16 {
+        right: 290px;
+        top: 58%;
+        --line: 290px;
+        --rotate: 0;
+      }
+      &.dot-17 {
+        right: 182px;
+        top: 67%;
+        --line: 182px;
+        --rotate: 0;
+      }
+      &.dot-18 {
+        right: 95px;
+        top: 84%;
+        --line: 95px;
+        --rotate: 0;
+      }
+    }
+  }
 
   &:after {
     content: "";
@@ -70,30 +201,30 @@
         vertical-align: middle;
       }
     }
+  }
 
-    .buttons {
+  .buttons {
+    display: flex;
+    column-gap: 12px;
+    a {
       display: flex;
-      column-gap: 12px;
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $white;
-        border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      background: $white;
+      border-radius: 10px;
 
-        &:hover {
-          background-color: var(--theme);
-        }
+      &:hover {
+        background-color: var(--theme);
+      }
 
-        &:active {
-          background-color: var(--theme-dark);
-        }
+      &:active {
+        background-color: var(--theme-dark);
+      }
 
-        img {
-          display: block;
-          width: 100%;
-          height: auto;
-        }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
     }
   }
@@ -115,11 +246,6 @@
       .h1 {
         font-size: 40px;
       }
-
-      .buttons {
-        flex-direction: column;
-        row-gap: 20px;
-      }
     }
   }
 
@@ -132,13 +258,106 @@
       display: none;
     }
 
+    .dots {
+      .dot {
+        position: absolute;
+
+        &:after {
+          content: "";
+          @include abs;
+          height: 1px;
+          background: linear-gradient(270deg, rgba(122, 212, 70, 0) 0%, #7ad446 100%);
+          width: var(--line);
+          transform-origin: 0 0;
+          transform: rotate(var(--rotate));
+          opacity: 0.2;
+        }
+
+        span {
+          display: block;
+          background: url(../img/bg/glowing-dot.svg) no-repeat;
+          width: 154px;
+          height: 136px;
+          @include abs-center;
+        }
+
+        &.dot-1 {
+          left: 25px;
+          top: 27%;
+          --line: 103px;
+        }
+        &.dot-2 {
+          left: 5px;
+          top: 35%;
+          --line: 103px;
+        }
+        &.dot-3 {
+          left: 25px;
+          top: 43%;
+          --line: 103px;
+        }
+        &.dot-4 {
+          left: 40px;
+          top: 57.5%;
+          --line: 103px;
+        }
+        &.dot-5 {
+          left: -5px;
+          top: 67%;
+          --line: 103px;
+        }
+        &.dot-6 {
+          right: auto;
+          left: 20%;
+          bottom: 125px;
+          --line: 103px;
+        }
+        &.dot-7 {
+          right: auto;
+          left: 35%;
+          bottom: 110px;
+          --line: 103px;
+        }
+        &.dot-9 {
+          right: 40px;
+          top: 56%;
+          --line: 103px;
+        }
+        &.dot-10 {
+          right: 5px;
+          top: 45%;
+          --line: 103px;
+        }
+        &.dot-11 {
+          right: 37px;
+          top: 28%;
+          --line: 103px;
+        }
+        &.dot-12 {
+          right: 16px;
+          top: 10%;
+          --line: 103px;
+        }
+
+        &.dot-8,
+        &.dot-13,
+        &.dot-14,
+        &.dot-15,
+        &.dot-16,
+        &.dot-17,
+        &.dot-18 {
+          display: none;
+        }
+      }
+    }
+
     .row {
       flex-direction: column-reverse;
     }
 
     .image {
       padding: 0;
-      margin: -40px -24px -81px;
+      margin: -40px -24px 0;
       height: 603px;
       padding: 17px 0 0;
 
@@ -149,6 +368,7 @@
     }
 
     .btn-wrapper {
+      margin: -81px 0 0;
       position: relative;
       z-index: 2;
     }
@@ -168,29 +388,21 @@
           display: none;
         }
       }
-
-      .buttons {
-        position: absolute;
-        left: 50%;
-        bottom: 88px;
-        row-gap: 8px;
-        margin: 0 0 0 7px;
-
-        a {
-          width: 145px;
-          height: 44px;
-          border-radius: 5px;
-        }
-      }
     }
-  }
 
-  @media screen and (max-width: 400px) {
-    background: none;
+    .buttons {
+      position: absolute;
+      left: 50%;
+      bottom: 113px;
+      margin: 0 0 0 7px;
+      flex-direction: column;
 
-    .image {
-      background: url(../img/bg/bg-download-m.png) 50% no-repeat;
-      background-size: 100% 100%;
+      a {
+        width: 145px;
+        height: 44px;
+        border-radius: 5px;
+        margin: 0 0 8px;
+      }
     }
   }
 }
