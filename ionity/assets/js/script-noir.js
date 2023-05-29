@@ -24,7 +24,10 @@ jQuery(document).ready(function($){
   function calc() {
     var val = $('[name="quantity"]').val();
     var price =  parseInt($('.product-price').attr('data-price')) ;
-    var total = val * price
+    var holders = calc_holders();
+    price = price + holders;
+    var total = val * price;
+
 
     if (total)
       $('.price-total').html('$' + total)
@@ -34,11 +37,15 @@ jQuery(document).ready(function($){
     $('.form-product-options li').each(function(){
       var tax = $(this).find('[data-name]').attr('data-name')
       var title = $(this).find('.title').html();
+      var holder = $(this).find('.radio-holder > :checked').parent().find('.holder:checked').val();
 
       if (tax === 'pa_montage')
         var option = $(this).find(':checked').parent().find('label').html()
       else
         var option = $(this).find('.active label > span').html()
+
+      if (holder > 0 )
+        option += ' with holder'
 
       text += '<p>' + title + ': ' + option + '</p>'
     })
@@ -50,6 +57,10 @@ jQuery(document).ready(function($){
   $(document).on('click', '.product-number ', function (e) {
     calc()
   })
+  $(document).on('change', '.holder ', function (e) {
+    calc()
+  })
+
 
 
   /* add to cart */
@@ -60,8 +71,9 @@ jQuery(document).ready(function($){
     var product_id = $(this).attr('data-product_id');
     var variation_id = $(this).attr('data-variation_id');
     var qty = $(this).attr('data-qty');
+    var that = $(this);
+    var holders = calc_holders();
 
-    var that = $(this)
 
     $('.block-form').block({
       message: null,
@@ -76,7 +88,8 @@ jQuery(document).ready(function($){
         action: 'add_to_cart',
         product_id: product_id,
         variation_id: variation_id,
-        qty: qty
+        qty: qty,
+        holders: holders
       },
       success: function (data) {
         $('.block-form').unblock()
@@ -86,6 +99,16 @@ jQuery(document).ready(function($){
   });
 
 
+  function calc_holders() {
+    var holders = 0;
+    $('.holder:checked').each(function(){
+      var val = parseInt($(this).val());
+      if ($(this).closest('.radio-holder').find('>input').is(':checked'))
+        holders += val;
+    })
+
+    return holders
+  }
 
   let value
   $('.btn-to-3').click(function(e){
