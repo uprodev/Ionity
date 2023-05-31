@@ -5,15 +5,14 @@ use LisDev\Delivery\NovaPoshtaApi2;
 
 
 function get_cities($key) {
-
-    $np = new NovaPoshtaApi2('63ff84977350e47bab0e207c2eb41263');
-
+    $my_current_lang = apply_filters( 'wpml_current_language', NULL );
 
 
     $result = request('Address', 'searchSettlements',
         $params = [
             "CityName" => $key,
-            "Limit" => "50"
+            "Limit" => "50",
+
         ]);
 
     $result = json_decode($result, 1);
@@ -24,15 +23,21 @@ function get_cities($key) {
 
         foreach ($result['data'][0]['Addresses'] as $city) {
 
+            $MainDescription = $city['MainDescription'];
             $city_details  = $city['Area']  ;
             $city_details  .= $city['Region'] ? ', '. $city['Region'] : ''  ;
-
             $details = $city_details;
+
+//            if ($my_current_lang == 'en') {
+//                $MainDescription = translit($MainDescription);
+//                $details_en = translit($details);
+//            }
 
             if ($city['Warehouses'] > 0)
                 $cities[] = [
-                    'label' => $city['MainDescription']. ' (' . $details .')',
+                    'label' => $MainDescription. ' (' . $details .')',
                     'value' => $city['DeliveryCity'],
+              //      'label_en' => $MainDescription_en. ' (' . $details_en .')',
                     ];
         }
     }
@@ -103,4 +108,8 @@ function request($model, $method, $params = null)
         }
 
     return  ($result);
+}
+
+function translit($s) {
+    return transliterator_transliterate('Any-Latin; Latin-ASCII', $s);
 }

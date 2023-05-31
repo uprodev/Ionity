@@ -1,5 +1,15 @@
 jQuery(document).ready(function($){
 
+
+  $.validator.addMethod(
+    "mobileValidation",
+    function(value, element) {
+      return value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g) ? true : false ;
+    },
+    "Mobile number invalid"
+  );
+
+
   $(document).on('show_variation', '.single_variation_wrap', function (event, variation) {
 
 
@@ -9,6 +19,7 @@ jQuery(document).ready(function($){
     $('.price-total').html('$' + variation.display_price)
     $('.add-to-cart').attr('data-variation_id', variation.variation_id)
 
+    console.log(variation)
     calc()
   });
 
@@ -55,6 +66,9 @@ jQuery(document).ready(function($){
   }
 
   $(document).on('click', '.product-number ', function (e) {
+    calc()
+  })
+  $(document).on('change', '.product-number input', function (e) {
     calc()
   })
   $(document).on('change', '.holder ', function (e) {
@@ -203,6 +217,7 @@ jQuery(document).ready(function($){
           },
           success: function(data) {
             response(data);
+            console.log(data)
           }
         });
       },

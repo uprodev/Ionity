@@ -27,6 +27,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 
 
+
 ?>
 
 
@@ -102,7 +103,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
                             </div>
                             <div class="form-field">
                                 <label for="billing_phone"><?= __('Your phone number', 'ionity') ?></label>
-                                <input name="billing_phone" type="tel" id="billing_phone" placeholder="<?= __('Your phone number', 'ionity') ?>" required/>
+                                <input name="billing_phone" data-rule-mobileValidation="true" type="tel" id="billing_phone" placeholder="<?= __('Your phone number', 'ionity') ?>" required/>
                             </div>
                             <div class="form-field">
                                 <label for="billing_email"><?= __('Your email', 'ionity') ?></label>
@@ -172,7 +173,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
                                 </div>
                                 <div class="form-field">
                                     <label for="street"><?= __('Street', 'ionity') ?></label>
-                                    <input type="text" name="shipping_address_1" id="street" placeholder="<?= __('Street', 'ionity') ?>" required>
+                                    <input type="text" name="shipping_address_1" id="street" placeholder="<?= __('Your street', 'ionity') ?>" required>
                                 </div>
                                 <div class="row">
                                     <div class="col">

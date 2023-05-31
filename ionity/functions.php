@@ -24,17 +24,21 @@ function add_styles() {
 }
 
 function add_scripts() {
-
+    $my_current_lang = apply_filters( 'wpml_current_language', NULL );
 	wp_enqueue_script( 'swiperjs', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array('jquery'), false, true);
 	wp_enqueue_script( 'headroomjs', get_template_directory_uri() . '/assets/js/headroom.js', array('jquery'), false, true);
 	wp_enqueue_script( 'lazyloadjs', get_template_directory_uri() . '/assets/js/lazyload.js', array('jquery'), false, true);
+    wp_enqueue_script( 'gsapjs', get_template_directory_uri() . '/assets/js/gsap.js', array('jquery'), false, true);
+    wp_enqueue_script( 'ScrollTriggerjs', get_template_directory_uri() . '/assets/js/ScrollTrigger.js', array('jquery'), false, true);
 
 	if(is_page_template('templates/template-noir.php') || is_product() || is_checkout()){
         wp_enqueue_script( 'jstylingjs', get_template_directory_uri() . '/assets/js/jquery.jstyling.js', array('jquery'), false, true);
         wp_enqueue_script( 'main-noir', get_template_directory_uri() . '/assets/js/main-noir.js', array('jquery'), false, true);
 
         wp_enqueue_script('jqueryvalidation',  'https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js', array(), false, 1);
-        wp_enqueue_script('jqueryvalidation_ru',  'https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_uk.js', array(), false, 1);
+
+        if ($my_current_lang !== 'en')
+            wp_enqueue_script('jqueryvalidation_ru',  'https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_uk.js', array(), false, 1);
 
         wp_enqueue_script('jquery.auto-complete',  'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js', array(), false, 1);
 
@@ -65,6 +69,7 @@ function theme_register_nav_menu(){
 	register_nav_menus( array(
         'left-menu' => 'Left Menu',
         'right-menu'  => 'Right Menu',
+        'footer-menu'  => 'Footer Menu',
        )
     );
 	add_theme_support( 'post-thumbnails');
