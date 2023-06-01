@@ -1,5 +1,15 @@
 jQuery(document).ready(function($){
 
+
+  $.validator.addMethod(
+    "mobileValidation",
+    function(value, element) {
+      return value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g) ? true : false ;
+    },
+    "Mobile number invalid"
+  );
+
+
   $(document).on('show_variation', '.single_variation_wrap', function (event, variation) {
 
 
@@ -9,6 +19,7 @@ jQuery(document).ready(function($){
     $('.price-total').html('$' + variation.display_price)
     $('.add-to-cart').attr('data-variation_id', variation.variation_id)
 
+    console.log(variation)
     calc()
   });
 
@@ -24,7 +35,10 @@ jQuery(document).ready(function($){
   function calc() {
     var val = $('[name="quantity"]').val();
     var price =  parseInt($('.product-price').attr('data-price')) ;
-    var total = val * price
+    var holders = calc_holders();
+    price = price + holders;
+    var total = val * price;
+
 
     if (total)
       $('.price-total').html('$' + total)
@@ -34,11 +48,15 @@ jQuery(document).ready(function($){
     $('.form-product-options li').each(function(){
       var tax = $(this).find('[data-name]').attr('data-name')
       var title = $(this).find('.title').html();
+      var holder = $(this).find('.radio-holder > :checked').parent().find('.holder:checked').val();
 
       if (tax === 'pa_montage')
         var option = $(this).find(':checked').parent().find('label').html()
       else
         var option = $(this).find('.active label > span').html()
+
+      if (holder > 0 )
+        option += ' with holder'
 
       text += '<p>' + title + ': ' + option + '</p>'
     })
@@ -50,6 +68,13 @@ jQuery(document).ready(function($){
   $(document).on('click', '.product-number ', function (e) {
     calc()
   })
+  $(document).on('change', '.product-number input', function (e) {
+    calc()
+  })
+  $(document).on('change', '.holder ', function (e) {
+    calc()
+  })
+
 
 
   /* add to cart */
@@ -60,8 +85,9 @@ jQuery(document).ready(function($){
     var product_id = $(this).attr('data-product_id');
     var variation_id = $(this).attr('data-variation_id');
     var qty = $(this).attr('data-qty');
+    var that = $(this);
+    var holders = calc_holders();
 
-    var that = $(this)
 
     $('.block-form').block({
       message: null,
@@ -76,7 +102,8 @@ jQuery(document).ready(function($){
         action: 'add_to_cart',
         product_id: product_id,
         variation_id: variation_id,
-        qty: qty
+        qty: qty,
+        holders: holders
       },
       success: function (data) {
         $('.block-form').unblock()
@@ -86,6 +113,16 @@ jQuery(document).ready(function($){
   });
 
 
+  function calc_holders() {
+    var holders = 0;
+    $('.holder:checked').each(function(){
+      var val = parseInt($(this).val());
+      if ($(this).closest('.radio-holder').find('>input').is(':checked'))
+        holders += val;
+    })
+
+    return holders
+  }
 
   let value
   $('.btn-to-3').click(function(e){
@@ -180,6 +217,7 @@ jQuery(document).ready(function($){
           },
           success: function(data) {
             response(data);
+            console.log(data)
           }
         });
       },

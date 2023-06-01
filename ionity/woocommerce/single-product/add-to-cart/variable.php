@@ -72,6 +72,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                                 );
                                 foreach ($terms as $term) {
                                     $default = $product->get_variation_default_attribute($attribute_name);
+                                    $holder = get_field('holder', $term);
                                     ?>
                                     <div class="radio-holder <?= $term->taxonomy === 'pa_montage' ? 'montage' : 'connector'  ?>-selection">
                                         <input <?php checked($default, $term->slug) ?> type="radio" data-name="<?= $term->taxonomy ?>" id="<?= $attribute_name ?>_<?= $term->slug ?>" name="attribute_<?= $attribute_name ?>" value="<?= $term->slug ?>"  />
@@ -79,13 +80,19 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
                                             <?php if ($term->description) { ?>
                                                 <span><?= $term->name ?></span>
-                                                <p>Max power<span><?= $term->description ?> kWt</span></p>
+                                                <p><?= __('Max power', 'ionity') ?><span><?= $term->description ?> kWt</span></p>
                                             <?php } else { ?>
                                                 <?= $term->name ?>
                                             <?php } ?>
 
-
                                         </label>
+
+                                        <?php if ($holder > 0) { ?>
+                                        <div class="checkbox-holder">
+                                            <input class="holder" type="checkbox" name="holder[]" id="check<?= $term->taxonomy ?>" value="<?= $holder ?>">
+                                            <label for="check<?= $term->taxonomy ?>"><?= __('Add a holder', 'ionity') ?></label>
+                                        </div>
+                                        <?php } ?>
                                     </div>
                                 <?php } ?>
 
@@ -99,7 +106,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         <div class="form-product-selected">
             <ul>
                 <li>
-                    <div class="title">My order</div>
+                    <div class="title"><?= __('My order', 'ionity') ?></div>
                     <div class="options-list">
 
                     </div>
@@ -109,14 +116,14 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         <div class="form-product-total">
             <ul>
                 <li>
-                    <div class="title">Total</div>
+                    <div class="title"><?= __('Total', 'ionity') ?></div>
                     <div class="price-total"></div>
                 </li>
             </ul>
         </div>
         <div class="form-buttons">
-            <button data-product_id="<?= $product->get_id() ?>" data-qty="1" data-variation_id="" type="submit" class="add-to-cart btn btn-light">continue</button>
-            <a href="#">Back</a>
+            <button data-product_id="<?= $product->get_id() ?>" data-qty="1" data-variation_id="" type="submit" class="add-to-cart btn btn-light"><?= __('continue', 'ionity') ?></button>
+            <a href="#"><?= __('Back', 'ionity') ?></a>
         </div>
     </form>
 

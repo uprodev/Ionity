@@ -28,6 +28,12 @@ function add_to_cart()
     $qty = $_GET['qty'] > 0 ? (int)$_GET['qty'] : 1;
     $added = WC()->cart->add_to_cart($product_id, $qty, $variation_id);
 
+
+
+
+    $_SESSION['val'] = (int)$_GET['holders'] * $qty ;
+
+
     wp_send_json(
         [
             'url' => get_permalink(541),
@@ -36,6 +42,14 @@ function add_to_cart()
 
 
     wp_die();
+}
+
+add_action('woocommerce_cart_calculate_fees', 'woo_add_cart_fee');
+
+function woo_add_cart_fee() {
+    session_start();
+    $extracost = $_SESSION['val'];
+    WC()->cart->add_fee( 'Holder', $extracost);
 }
 
 
