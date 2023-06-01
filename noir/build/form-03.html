@@ -6,7 +6,7 @@
     <meta name="description" content="description" />
     <meta name="keywords" content="keywords" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles-noir.css" />
     <link rel="shortcut icon" href="favicon.ico" />
   </head>
 
@@ -85,7 +85,7 @@
                     <div class="delivery-variant active" data-var="self">
                       <div class="form-field">
                         <label for="city">City</label>
-                        <input type="text" id="city" placeholder="City" />
+                        <input type="text" id="city" placeholder="City" maxlength="20" />
                       </div>
                       <div class="form-field">
                         <label for="branch">Branch number</label>
@@ -103,23 +103,23 @@
                     <div class="delivery-variant" data-var="courier">
                       <div class="form-field">
                         <label for="city1">City</label>
-                        <input type="text" id="city1" placeholder="Your city" />
+                        <input type="text" id="city1" placeholder="Your city" maxlength="20" />
                       </div>
                       <div class="form-field">
                         <label for="street">Street</label>
-                        <input type="text" id="street" placeholder="Street" />
+                        <input type="text" id="street" placeholder="Your street" maxlength="50" />
                       </div>
                       <div class="row">
                         <div class="col">
                           <div class="form-field">
                             <label for="building">Building</label>
-                            <input type="text" id="building" placeholder="Your building" />
+                            <input type="text" id="building" placeholder="Your building" maxlength="5" />
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-field">
                             <label for="apartment">Apartment</label>
-                            <input type="text" id="apartment" placeholder="Your apartment" />
+                            <input type="text" id="apartment" placeholder="Your apartment" maxlength="5" />
                           </div>
                         </div>
                       </div>
@@ -178,6 +178,6 @@
     <script src="assets/js/headroom.js"></script>
     <script src="assets/js/lazyload.js"></script>
     <script src="assets/js/jquery.jstyling.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main-noir.js"></script>
   </body>
 </html>

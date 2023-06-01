@@ -25,22 +25,6 @@ jQuery(document).ready(function ($) {
   var headroom = new Headroom(header);
   headroom.init();
 
-  $(".btn-menu").on("click", function () {
-    if ($(this).hasClass("active")) {
-      $(".header").removeClass("menu-opened");
-      $(this).removeClass("active");
-      $(".main-navigation").removeClass("active");
-      headroom.unfreeze();
-    } else {
-      const scrollY = $(window).scrollTop();
-      $("body").css({ position: "fixed", top: -scrollY });
-      $(".header").addClass("menu-opened");
-      $(this).addClass("active");
-      $(".main-navigation").addClass("active");
-      headroom.freeze();
-    }
-  });
-
   $(".btn-menu-open").on("click", function () {
     if ($(this).hasClass("active")) {
       $(this).removeClass("active");
@@ -51,12 +35,14 @@ jQuery(document).ready(function ($) {
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
       $(".main-navigation").removeClass("active");
       $(".btn-menu-open").removeClass("active");
+      headroom.unfreeze();
     } else {
       $(this).addClass("active");
       $(".main-navigation").addClass("active");
       const scrollY = $(window).scrollTop();
       $("body").css({ position: "fixed", top: -scrollY, "padding-right": getScrollBarWidth() });
       $(".header").addClass("nav-opened").css({ right: getScrollBarWidth() });
+      headroom.freeze();
     }
   });
 
@@ -68,6 +54,7 @@ jQuery(document).ready(function ($) {
     window.scrollTo(0, parseInt(scrollY || "0") * -1);
     $(".main-navigation").removeClass("active");
     $(".btn-menu-open").removeClass("active");
+    headroom.unfreeze();
   });
 
   $(".main-navigation ul a span")
@@ -188,7 +175,7 @@ jQuery(document).ready(function ($) {
   });
 
   // fade up
-  document.fonts.onloadingdone = function (fontFaceSetEvent) {
+  function fadeUp() {
     gsap.utils.toArray(".fade-up, .fade-wrapper > *").forEach(function (elem) {
       ScrollTrigger.create({
         trigger: elem,
@@ -205,7 +192,13 @@ jQuery(document).ready(function ($) {
         },
       });
     });
-  };
+  }
+
+  $("body").imagesLoaded(function () {
+    setTimeout(() => {
+      fadeUp();
+    }, 1000);
+  });
 
   // dots
   if ($(".block-download").length) {

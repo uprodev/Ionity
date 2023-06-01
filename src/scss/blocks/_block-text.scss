@@ -3,7 +3,7 @@
   line-height: 1.5;
   margin: 0 0 97px;
 
-  * {
+  *:not(.article-banner) {
     &:last-child {
       margin-bottom: 0;
     }
