@@ -1,12 +1,54 @@
 jQuery(document).ready(function($){
 
 
+  function ValidateCreditCardNumber(ccNum) {
+    var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+    var amexpRegEx = /^(?:3[47][0-9]{13})$/;
+    var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+    var isValid = false;
+    if (visaRegEx.test(ccNum)) {
+      isValid = true;
+    } else if(mastercardRegEx.test(ccNum)) {
+      isValid = true;
+    } else if(amexpRegEx.test(ccNum)) {
+      isValid = true;
+    } else if(discovRegEx.test(ccNum)) {
+      isValid = true;
+    }
+
+    if(isValid) {
+     return true
+    } else {
+      return false
+    }
+  }
+
+  jQuery('#cardDate').mask('00/00');
+
+
   $.validator.addMethod(
     "mobileValidation",
     function(value, element) {
       return value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g) ? true : false ;
     },
     "Mobile number invalid"
+  );
+
+  $.validator.addMethod(
+    "cartNum",
+    function(value, element) {
+      return ValidateCreditCardNumber(value) ;
+    },
+    "Cart number invalid"
+  );
+
+  $.validator.addMethod(
+    "cartDate",
+    function(value, element) {
+      return value.match(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/) ? true : false ;
+    },
+    "Cart date invalid"
   );
 
 
@@ -249,6 +291,54 @@ jQuery(document).ready(function($){
 
       minLength: 3,
     });
+
+
+
+
+  $('.form-checkout [type="submit"]').click(function(e) {
+    e.preventDefault();
+
+    var data = $('.form-checkout').serialize();
+
+    let valid = true;
+    let fields = ['#cardNum', '#cardDate', '#cvv'];
+    $.each(fields, function(i, val){
+      valid = $(val).valid() == false ? false : valid;
+    })
+
+    if (valid) {
+
+      $('.page-wrapper').block({
+        message: null,
+        overlayCSS: {
+          background: '#fff',
+          opacity: 0.4
+        }
+      });
+      $.ajax({
+        url: wc_add_to_cart_params.ajax_url,
+        data: data,
+        type: 'POST',
+        success: function (data) {
+          $('.page-wrapper').unblock();
+
+      //    console.log(data)
+
+          if (data.result == 'ok') {
+            location.href = data.success_url
+          } else {
+            $('.result').html(data.status + ': ' + data.err_description)
+          }
+
+        },
+      });
+    }
+
+
+
+
+  })
+
 
 
 
