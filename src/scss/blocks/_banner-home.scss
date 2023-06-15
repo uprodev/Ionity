@@ -80,7 +80,7 @@
   }
 
   @include media-breakpoint-down(md) {
-    height: calc(100vh - 106px);
+    height: calc(100vh - 60px);
 
     .banner-text {
       margin: 0 0 25px;
@@ -94,6 +94,14 @@
     .btn-outlined {
       width: 100%;
       max-width: 237px;
+    }
+  }
+
+  @media (max-height: 500px) {
+    padding: 0 0 30px;
+
+    .banner-text {
+      margin: 0 0 15px;
     }
   }
 }

@@ -78,6 +78,12 @@
             }
           }
         }
+
+        &:last-child {
+          .card .card-main {
+            min-height: 400px;
+          }
+        }
       }
     }
   }

@@ -21,5 +21,13 @@
 
   @include media-breakpoint-down(md) {
     margin: 0 0 32px;
+
+    .card-wide--two-col {
+      .wrapper {
+        .col-right {
+          justify-content: flex-start;
+        }
+      }
+    }
   }
 }

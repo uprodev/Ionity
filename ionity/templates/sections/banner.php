@@ -10,6 +10,9 @@ $ind = get_row_index();
     <figure class="banner-bg">
         <video src="<?= $video['url'];?>" loop autoplay muted playsinline></video>
     </figure>
+    <figure class="banner-image">
+        <img src="" alt="">
+    </figure>
     <div class="container-fluid">
         <div class="inner">
             <div class="banner-text">

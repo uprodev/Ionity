@@ -8,3 +8,10 @@
     @extend .fade-up;
   }
 }
+
+@media (max-height: 500px) {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

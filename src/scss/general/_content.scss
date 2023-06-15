@@ -48,7 +48,7 @@ body {
   flex-direction: column;
 
   @include media-breakpoint-down(md) {
-    padding-top: 106px;
+    padding-top: 60px;
   }
 }
 
