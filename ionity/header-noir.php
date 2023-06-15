@@ -26,4 +26,10 @@
             </div>
         </div>
     </header>
-    <div class="page-content">
+    <div class="page-content
+<?php
+    if ( is_checkout() && !empty( is_wc_endpoint_url('order-received') ) ) {
+        echo 'block-form-success';
+    }
+    ?>
+">

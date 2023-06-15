@@ -1,6 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
+include 'inc/liqpay.php';
 include 'inc/woo.php';
 
 add_action( 'wp_enqueue_scripts', 'add_styles' );
@@ -35,6 +36,8 @@ function add_scripts() {
         wp_enqueue_script( 'jstylingjs', get_template_directory_uri() . '/assets/js/jquery.jstyling.js', array('jquery'), false, true);
         wp_enqueue_script( 'main-noir', get_template_directory_uri() . '/assets/js/main-noir.js', array('jquery'), false, true);
 
+        wp_enqueue_script('jquery.mask',  'https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js', array(), false, 1);
+
         wp_enqueue_script('jqueryvalidation',  'https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js', array(), false, 1);
 
         if ($my_current_lang !== 'en')
@@ -43,6 +46,8 @@ function add_scripts() {
         wp_enqueue_script('jquery.auto-complete',  'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js', array(), false, 1);
 
         wp_enqueue_script( 'script-noir', get_template_directory_uri() . '/assets/js/script-noir.js', array('jquery'), false, true);
+
+
 
 
 
