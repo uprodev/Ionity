@@ -207,7 +207,7 @@ jQuery(document).ready(function($){
 
     let delivery = $('.shipping input:checked').val();
 
-    console.log(delivery)
+   // console.log(delivery)
 
     let fields = 'free_shipping:1' === delivery ? ['#city1', '#street', '#building'] : ['#city_np', '#branch']
 
@@ -259,7 +259,7 @@ jQuery(document).ready(function($){
           },
           success: function(data) {
             response(data);
-            console.log(data)
+       //     console.log(data)
           }
         });
       },
@@ -293,6 +293,41 @@ jQuery(document).ready(function($){
     });
 
 
+
+  $('.payment-list [data-target]').click(function(e){
+    e.preventDefault();
+    var target = $(this).attr('data-target');
+    $('.pay-form').hide();
+    $(target).show();
+
+    if (target === '.liqpay-form')
+      $('.form-buttons').show();
+    else
+      $('.form-buttons').hide();
+  })
+
+  $('.btn-wfp').click(function(e){
+    e.preventDefault();
+    $('.page-wrapper').block({
+      message: null,
+      overlayCSS: {
+        background: '#fff',
+        opacity: 0.4
+      }
+    });
+    var data = $('.form-checkout').serialize();
+    $.ajax({
+      url: wc_add_to_cart_params.ajax_url,
+      data: data,
+      type: 'POST',
+      success: function (data) {
+        $('.page-wrapper').unblock();
+
+        $('.result').html(data.form)
+
+      },
+    });
+  })
 
 
   $('.form-checkout [type="submit"]').click(function(e) {

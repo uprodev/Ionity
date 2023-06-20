@@ -7,7 +7,8 @@ $actions = [
     'get_cities_np',
     'get_warehouses_np',
     'payment_request',
-    'payment_processing'
+    'payment_processing',
+    'payment_processing_wfp',
 
 ];
 foreach ($actions as $action) {
@@ -112,7 +113,6 @@ function payment_request() {
     }
 
 
-
     if ($_POST['holder']) {
         $fee = new WC_Order_Item_Fee();
         $fee->set_name( 'Holders' );
@@ -131,15 +131,26 @@ function payment_request() {
     $shipping->set_method_title( $method_title );
     $shipping->set_method_id($method );
     $shipping->set_total( 0 );
-
     $order->add_item( $shipping );
 
     $total = $order->calculate_totals();
     $order->update_status("Pending", '', TRUE);
 
 
+
+    if ( $_POST['cvv'] &&  $_POST['cardNum'] &&  $_POST['cardDate'])
+        payment_liqpay($order);
+    else
+        payment_wfp($order);
+
+    wp_die();
+}
+
+
+function payment_liqpay($order) {
     $public_key = 'sandbox_i87646462385';
     $private_key = 'sandbox_5kJMR5GxnTknVGWC3YwMMBMimXQCpOOsemw1WO3i';
+    update_field('payment_method','Liqpay', $order->get_id());
 
     $card_exp_month = explode('/', $_POST['cardDate']);
     $liqpay = new LiqPay($public_key, $private_key);
@@ -163,9 +174,103 @@ function payment_request() {
     $res['success_url'] = $order_received_url;
 
     wp_send_json($res);
-
-    wp_die();
 }
+
+
+function payment_wfp($order) {
+
+    $date = time();
+    $rnd = rand(0,99999999);
+    $order_id = $order->get_id() . 'wfprnd-'.$rnd;
+    //$order_id = rand(0,99999999);
+    update_field('payment_method','Wayforpay', $order->get_id());
+
+
+    foreach( $order->get_items(  ) as $item_id => $item ) {
+
+        $item_name[] = $item->get_name();
+
+    }
+    $item_names = implode(';', $item_name);
+    $total =  $order->get_total();
+    $total = 1;
+    $string = "test_merch_n1;www.ionity.ua;$order_id;$date;$total;UAH;$item_names;1;$total";
+    $key = "flk3409refn54t54t*FNJRET";
+    $hash = hash_hmac("md5",$string,$key);
+    update_field('payment_ref', $hash, $order->get_id());
+    $order_received_url = wc_get_endpoint_url( 'order-received', $order->get_id(), wc_get_checkout_url() );
+
+    ob_start();
+    ?>
+
+
+    <script type="text/javascript">
+        var wayforpay = new Wayforpay();
+        var pay = function () {
+            wayforpay.run({
+                    merchantAccount : "test_merch_n1",
+                    merchantDomainName : "www.ionity.ua",
+                    authorizationType : "SimpleSignature",
+                    merchantSignature : "<?= $hash ?>",
+                    orderReference : "<?= $order_id ?>",
+                    orderDate : "<?= $date ?>",
+                    amount : "<?= $total ?>",
+                    currency : "UAH",
+                    productName : "<?= $item_names ?>",
+                    productPrice : "<?= $total ?>",
+                    productCount : "1",
+                    clientFirstName : "<?= $order->get_billing_first_name() ?>",
+                    clientEmail : "<?= $order->get_billing_email() ?>",
+                    clientPhone: "<?= $order->get_billing_phone() ?>",
+                    language: "UA"
+                },
+                function (response) {
+                    console.log(response);
+                    jQuery.ajax({
+                        url: "https://ionity.uprodev.site/wp-admin/admin-ajax.php",
+                        data: {
+                            action: 'payment_processing_wfp',
+                            order_id: <?= $order->get_id()  ?>,
+                            sign: response.merchantSignature,
+                        },
+                        type: 'POST',
+                        success: function (data) {
+                            console.log(data)
+                          //  location.url = '<?= $order_received_url ?>';
+
+
+                        },
+                    });
+
+// on approved
+                },
+                function (response) {
+// on declined
+                },
+                function (response) {
+// on pending or in processing
+                }
+            );
+        }
+
+        window.addEventListener("message", function () {
+            if (event.data == 'WfpWidgetEventClose') {
+                 location.href = '<?= $order_received_url ?>';
+            }
+        }, false);
+
+        pay();
+    </script>
+
+<?php
+    $html = ob_get_clean();
+
+    $res['form'] = $html;
+
+    wp_send_json($res);
+
+}
+
 
 function payment_processing() {
 
@@ -183,7 +288,27 @@ function payment_processing() {
     }
 
 
+    wp_die();
 
+}
+
+function payment_processing_wfp() {
+
+   $order_id = $_POST['order_id'];
+   $sign = $_POST['sign'];
+   $order_sign = get_field('payment_ref', $order_id);
+
+    update_field('payment_method','Wayforpay1', $order_id);
+
+   // if ($sign === $order_sign) {
+        $order = new WC_Order($order_id);
+        $order->update_status("processing", TRUE);
+  //  }
+
+    wp_send_json([
+        'sign' => $sign,
+        'order_sign' => $order_sign
+    ]);
 
     wp_die();
 

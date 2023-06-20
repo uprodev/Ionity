@@ -40,9 +40,13 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
                         </figure>
                     </div>
                 </div>
+
+
                 <form class="form-checkout col-lg-8 col-xxl-6" >
                     <div class="form-header">
                         <h2><?= __('Make an order', 'ionity') ?></h2>
+
+
                         <div class="form-ready">
                             <?php
                             foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
@@ -90,6 +94,12 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
                         </div>
                         <p class="step-title"><?= __('Step 2. Enter personal details', 'ionity') ?></p>
                     </div>
+
+
+
+
+
+
                     <div data-step="2" data-title="<?php _e('Step 2. Enter personal details', 'ionity') ?>" class="form-main">
                         <div action="#">
                             <div class="form-field">
@@ -194,13 +204,46 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
                         </div>
                     </div>
                     <div style="display: none" data-step="4" class="form-main" data-title="<?php _e('Step 4. Enter payment details', 'ionity') ?>">
-                        <div action="#">
+                        <div  >
                             <div class="form-payment">
-                                <div class="form-field">
+
+                                <div class="form-delivery-options">
+                                    <ul>
+
+                                    <li>
+                                        <div class="title">Payment method</div>
+                                        <div class="payment-list">
+                                            <a href="#" data-target=".liqpay-form" class="btn btn-light active">Liqpay</a>
+                                            <a href="#" data-target=".wfp-form" class="btn btn-light ">WayForPay</a>
+
+    <!--                                            <div class="woocommerce-shipping-totals shipping d-flex">-->
+    <!---->
+    <!--                                                <div class="radio-holder payment-selection">-->
+    <!--                                                    <input type="radio" name="payment" data-index="0" id="payment1" value="lp" class=" " checked="checked">-->
+    <!--                                                    <label for="payment1">Liqpay</label>-->
+    <!--                                                </div>-->
+    <!---->
+    <!--                                                <div class="radio-holder payment-selection">-->
+    <!--                                                    <input type="radio" name="payment" data-index="0" id="payment2" value="wfp" class="shipping_method">-->
+    <!--                                                    <label for="payment2">WayForPay</label>-->
+    <!--                                                </div>-->
+    <!---->
+    <!--                                            </div>-->
+
+
+                                        </div>
+                                    </li>
+                                </ul>
+                                </div>
+
+
+                                <div class="liqpay-form pay-form">
+                                    <div class="form-field">
                                     <label for="cardNum"><?= __('Card number', 'ionity') ?></label>
                                     <input   onkeyup="this.value=this.value.replace(/[^\d]/,'')" data-rule-cartNum="true" type="text" id="cardNum" name="cardNum" placeholder="<?= __('Card number', 'ionity') ?>" required>
                                 </div>
-                                <div class="row">
+                                    <div class="row">
+
                                     <div class="col">
                                         <div class="form-field">
                                             <label for="cardDate">MM / YY</label>
@@ -215,14 +258,18 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
                                             <input maxlength="3" data-rule-number="true" data-rule-minlength="3" data-rule-maxlength="3" type="text" id="cvv" name="cvv" placeholder="CVV" required>
                                         </div>
 
-
-
                                     </div>
                                 </div>
-<!--                                <div class="form-field">-->
-<!--                                    <label for="cardName">--><?//= __('Card holder name', 'ionity') ?><!--</label>-->
-<!--                                    <input type="text" id="cardName" placeholder="--><?//= __('Card holder name', 'ionity') ?><!--">-->
-<!--                                </div>-->
+                                </div>
+
+                                <div class="wfp-form pay-form" style="display: none">
+
+                                    <script id="widget-wfp-script" language="javascript" type="text/javascript" src="https://secure.wayforpay.com/server/pay-widget.js"></script>
+
+                                    <button class="btn btn-dark btn-wfp" type="button" onclick0="pay();">Pay with WayForPay</button>
+
+                                </div>
+
                                 <div class="result"></div>
 
                                 <div class="form-buttons">
